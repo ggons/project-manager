@@ -1,8 +1,7 @@
 {
-  "name": "react-scheduler",
+  "name": "project-manager",
   "version": "0.1.0",
   "private": true,
-  "homepage": "http://ggons.github.io/react-scheduler",
   "dependencies": {
     "@material-ui/core": "^3.0.1",
     "@material-ui/icons": "^3.0.1",
@@ -33,8 +32,6 @@
     "electron": "electron ."
   },
   "devDependencies": {
-    "electron": "^2.0.8",
-    "gh-pages": "^1.2.0",
     "redux-devtools-extension": "^2.13.5"
   }
 }
