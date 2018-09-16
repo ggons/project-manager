@@ -1,0 +1,8 @@
+/calendar
+
+/project
+/project/list       PROJECT LIST
+/project/new        PROJECT CREATE
+/project/:id        PROJECT VIEW
+/project/:id/list   TASK LIST
+/project/:id/board  TASK BOARD
