@@ -10,7 +10,9 @@ export const REQUEST_TASKS_SUCCESS = 'REQUEST_TASKS_SUCCESS';
 export const REQUEST_TASKS_FAILED = 'REQUEST_TASKS_FAILED';
 
 export const ADD_TASK = 'ADD_TASK';
-export const CHANGE_TASK_VALUE = 'CHANGE_TASK_VALUE';
+export const SELECT_TASK = 'SELECT_TASK';
+export const CHANGE_TASK_FORM = 'CHANGE_TASK_FORM';
+export const UPDATE_TASK = 'UPDATE_TASK';
 
 // // date.js
 // export const SET_CURRENT_DATE = 'SET_CURRENT_DATE';

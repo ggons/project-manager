@@ -24,9 +24,12 @@ router.post('/', async (req, res) => {
   if (error) return res.status(400).send(error.details[0].message);
 
   let project = new Project({ name: req.body.name });
-  project = await project.save();
+  await project.save();
 
-  res.send(project);
+  const projects = await Project.find()
+    .select("-__v");
+
+  res.send(projects);
 });
 
 module.exports = router;

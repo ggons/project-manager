@@ -1,5 +1,6 @@
 import React from 'react';
 import classNames from 'classnames';
+import moment from 'moment';
 import { withStyles } from '@material-ui/core/styles';
 import { Grid, Typography } from '@material-ui/core';
 import UserIcon from '@material-ui/icons/PersonOutline';
@@ -25,23 +26,26 @@ const styles = theme => ({
     padding: `${theme.spacing.unit + 2}px 0`,
   },
   name: {
-    width: '50%'
+    flex: '1 1 auto'
   },
   date: {
-    width: 60,
+    marginRight: 20
   },
   status: {
+    width: 70,
+    marginRight: 20,
     fontWeight: 'bold',
+    textAlign: 'right'
   },
   ...taskStyles
 });
 
 const SprintListTaskList = ({ classes, tasks, onSelect }) => {
   const renderName = name => 
-    <div className={classes.name}>{name}</div>;
+    <Typography variant="body2" className={classes.name}>{name}</Typography>;
 
   const renderDate = (date) =>
-    <div className={classes.date}><Typography variant="caption" >{date}</Typography></div>;
+    <Typography variant="caption" className={classes.date}>{formatDate(date)}</Typography>;
 
   const renderStatus = (status) => 
     <Typography variant="caption" className={classNames(classes.status, classes[status.replace(' ', '').toLowerCase()])}>{status}</Typography>;
@@ -53,13 +57,17 @@ const SprintListTaskList = ({ classes, tasks, onSelect }) => {
           <Grid item className={classes.iconBox}><UserIcon /></Grid>
           <Grid item xs className={classes.row}>
             { renderName(task.name) }
-            { renderDate(task.date) }
+            { renderDate(task.created_at) }
             { renderStatus(getStatusStr(task.status)) }
           </Grid>
         </Grid>
       ))}
     </Grid>
   );
+
+  function formatDate(date) {
+    return moment(date).format('MMMM DD');
+  }
 }
  
 export default withStyles(styles)(SprintListTaskList);

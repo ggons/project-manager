@@ -1,37 +1,23 @@
 import React from 'react';
 import { Grid } from '@material-ui/core';
-import SprintListLeftPane from 'components/sprint/SprintListLeftPane';
-import SprintListTaskForm from 'components/sprint/SprintListTaskForm';
+import SprintListTasksContainer from 'containers/sprint/SprintListTasksContainer';
+import SprintListTaskDetailContainer from 'containers/sprint/SprintListTaskDetailContainer';
 
 const SprintList = ({ 
   tasks, 
-  activeIndex, 
   isOpenNewTaskInput, 
   onOpenNewTaskInput, 
   onNewTaskSubmit,
   onChange,
   onSelect,
-  onStatusChange
 }) => {
   return (  
-    <Grid container>
+    <Grid container spacing={8}>
       <Grid item xs>
-        <SprintListLeftPane
-          tasks={tasks}
-          isOpenNewTaskInput={isOpenNewTaskInput}
-          activeIndex={activeIndex}
-          onOpenNewTaskInput={onOpenNewTaskInput}
-          onSubmit={onNewTaskSubmit}
-          onChange={onChange}
-          onSelect={onSelect}
-        />
+        <SprintListTasksContainer />
       </Grid>
       <Grid item xs>
-        <SprintListTaskForm
-          activeIndex={activeIndex}
-          task={tasks[activeIndex]}
-          onStatusChange={onStatusChange}
-        />
+        <SprintListTaskDetailContainer />
       </Grid>
     </Grid>
   );

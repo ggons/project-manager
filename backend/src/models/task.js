@@ -8,6 +8,16 @@ const taskSchema = new mongoose.Schema({
     minlength: 2,
     maxlength: 30
   },
+  status: {
+    type: Number,
+    required: true,
+    enum: [0, 1, 2, 3, 4],  // ['New', 'In Progress', 'Completed', 'On Hold', 'Cancelled']
+    default: 0
+  },
+  description: {
+    type: String,
+    default: ''
+  },
   created_at: {
     type: Date,
     default: Date.now
@@ -15,12 +25,6 @@ const taskSchema = new mongoose.Schema({
   updated_at: {
     type: Date,
     default: Date.now
-  },
-  status: {
-    type: Number,
-    required: true,
-    enum: [0, 1, 2, 3, 4],  // ['New', 'In Progress', 'Completed', 'On Hold', 'Cancelled']
-    default: 0
   },
   project_id: {
     type: mongoose.Schema.Types.ObjectId,

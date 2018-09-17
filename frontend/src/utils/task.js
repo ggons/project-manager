@@ -8,6 +8,14 @@ const status = [
   'Cancelled'
 ];
 
+const statusColor = {
+  'New': lightBlue[500],
+  'In Progress': cyan[500],
+  'Completed': green[300], 
+  'On Hold': brown[200],
+  'Cancelled': brown[200] 
+}
+
 const styles = {
   new: {
     color: lightBlue[500]
@@ -25,6 +33,13 @@ const styles = {
     color: brown[200]
   }
 };
+
+export const getStatusColor = (key) => {
+  if (typeof key === 'string')
+    return statusColor[key];
+  else
+    return statusColor[status[key]]
+}
 
 export function getStatusStr(index) {
   if (index === undefined) 

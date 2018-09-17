@@ -43,9 +43,12 @@ router.post('/', async (req, res) => {
   if (error) return res.status(400).send(error.details[0].message);
 
   let task = new Task({ name: req.body.name, project_id: req.body.project_id });
-  task = await task.save();
+  await task.save();
 
-  res.send(task);
+  const tasks = await Task.find({ project_id: req.body.project_id })
+    .select("-__v");
+
+  res.send(tasks);
 });
 
 
@@ -59,7 +62,10 @@ router.put("/:id", validateObjectId, async (req, res) => {
   if (!task)
     return res.status(404).send("The task with the given ID was not found.");
 
-  res.send(task);
+  const tasks = await Task.find({ project_id: req.body.project_id })
+    .select("-__v");
+
+  res.send(tasks);
 });
 
 router.delete("/:id", validateObjectId, async (req, res) => {

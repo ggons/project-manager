@@ -9,11 +9,10 @@ import * as projectService from 'services/projectService';
 
 export const addProject = name => {
   const response = projectService.addProject(name);
-  const result = projectService.getProjects();
-  
+
   return {
     type: ADD_PROJECT,
-    payload: result
+    payload: response
   }
 }
 

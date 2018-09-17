@@ -3,5 +3,6 @@ import { apiUrl } from 'config.json';
 
 const apiEndpoint = apiUrl + '/tasks';
 
-export const addTask = (task) => http.post(apiEndpoint, task);
+export const addTask = task => http.post(apiEndpoint, task);
 export const getTasksByProjectId = (projectId) => http.get(`${apiEndpoint}/project/${projectId}`);
+export const updateTask = task => http.put(`${apiEndpoint}/${task._id}`, task);
