@@ -25,13 +25,14 @@ const styles = theme => ({
 const SprintListLeftPane = ({ 
   classes, 
   tasks, 
+  selectedIndex,
   isOpenNewTaskInput,
   onOpenNewTaskInput, 
   onSubmit, 
   onChange,
   onSelect 
 }) => {
-  const renderTasks = <SprintListTaskList tasks={tasks} onSelect={onSelect} />
+  const renderTasks = <SprintListTaskList tasks={tasks} selectedIndex={selectedIndex} onSelect={onSelect} />;
 
   return (  
     <React.Fragment>

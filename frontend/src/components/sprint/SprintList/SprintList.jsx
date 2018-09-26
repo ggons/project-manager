@@ -3,18 +3,11 @@ import { Grid } from '@material-ui/core';
 import SprintListTasksContainer from 'containers/sprint/SprintListTasksContainer';
 import SprintListTaskDetailContainer from 'containers/sprint/SprintListTaskDetailContainer';
 
-const SprintList = ({ 
-  tasks, 
-  isOpenNewTaskInput, 
-  onOpenNewTaskInput, 
-  onNewTaskSubmit,
-  onChange,
-  onSelect,
-}) => {
+const SprintList = props => {
   return (  
     <Grid container spacing={8}>
       <Grid item xs>
-        <SprintListTasksContainer />
+        <SprintListTasksContainer {...props} />
       </Grid>
       <Grid item xs>
         <SprintListTaskDetailContainer />

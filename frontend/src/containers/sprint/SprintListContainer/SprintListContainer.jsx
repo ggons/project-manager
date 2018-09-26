@@ -10,7 +10,7 @@ class SprintListContainer extends Component {
 
   render() { 
     return (  
-      <SprintList />
+      <SprintList {...this.props} />
     );
   }
 }

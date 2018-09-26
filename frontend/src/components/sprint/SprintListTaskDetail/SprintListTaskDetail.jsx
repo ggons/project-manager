@@ -1,8 +1,11 @@
 import React from 'react';
+import classNames from 'classnames';
 import { withStyles } from '@material-ui/core/styles';
 import { Typography, Button, Grid, Divider, TextField } from '@material-ui/core';
-import { grey } from '@material-ui/core/colors';
+import { grey, lightBlue } from '@material-ui/core/colors';
 import DownArrowIcon from '@material-ui/icons/ArrowDropDown';
+import DateIcon from '@material-ui/icons/DateRangeOutlined';
+import AttachFileIcon from '@material-ui/icons/AttachFile';
 import SprintListStatusDialog from 'components/sprint/SprintListStatusDialog';
 import { getStatusColor, getStatusStr } from 'utils/task';
 
@@ -28,11 +31,26 @@ const styles = theme => ({
     padding: '4px 0px 4px 8px'
   },
   leftIcon: {
-    marginRight: theme.spacing.unit,
+    marginRight: theme.spacing.unit / 2,
   },
   textField: {
     marginLeft: theme.spacing.unit,
     marginRight: theme.spacing.unit,
+  },
+  middleRow: {
+    padding: `${theme.spacing.unit}px 0`
+  },
+  middleIcon: {
+    width: '0.7em',
+    height: '0.7em',
+  },
+  middleButton: {
+    fontWeight: 400,
+    fontSize: 10,
+    '&:hover': {
+      color: lightBlue[700],
+      background: 'none'
+    }
   },
 });
 
@@ -59,12 +77,19 @@ const SprintListTaskDetail = ({
             {statusStr[task.status]}
             <DownArrowIcon />
           </Button>
-          <Button 
-            size="small" 
-            className={classes.addButton} 
-            // onClick={() => onOpenNewTaskInput(true)}
-          >
+          <Button size="small" className={classes.addButton}>
             + Add aggignee
+          </Button>
+        </Grid>
+        <Divider />
+        <Grid item className={classes.middleRow}>
+          <Button size="small" className={classes.middleButton}>
+            <DateIcon className={classNames(classes.leftIcon, classes.middleIcon)} />
+            Set Date
+          </Button>
+          <Button size="small" className={classes.middleButton}>
+            <AttachFileIcon className={classNames(classes.leftIcon, classes.middleIcon)} />
+            Attach files
           </Button>
         </Grid>
         <Divider />

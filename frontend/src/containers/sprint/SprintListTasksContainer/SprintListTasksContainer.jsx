@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import SprintListLeftPane from 'components/sprint/SprintListLeftPane';
-import * as actions from 'actions'
+import * as actions from 'actions';
 
 class SprintListTasksContainer extends Component {
   state = {  
@@ -12,7 +12,6 @@ class SprintListTasksContainer extends Component {
   handleOpenNewTaskInput = (isOpen) => this.setState({ isOpenNewTaskInput: isOpen });
   handleChange = e => this.setState({ [e.target.name]: e.target.value });
   handleSelect = index => this.props.selectTask(index);
-
   handleNewTaskSubmit = e => {
     e.preventDefault();
 
@@ -27,12 +26,13 @@ class SprintListTasksContainer extends Component {
   }
 
   render() { 
-    const { tasks } = this.props;
+    const { tasks, selectedIndex } = this.props;
     const { isOpenNewTaskInput } = this.state;
 
     return (  
       <SprintListLeftPane
         tasks={tasks}
+        selectedIndex={selectedIndex}
         isOpenNewTaskInput={isOpenNewTaskInput}
         onOpenNewTaskInput={this.handleOpenNewTaskInput}
         onSubmit={this.handleNewTaskSubmit}
@@ -45,7 +45,8 @@ class SprintListTasksContainer extends Component {
 
 export default connect(
   state => ({
-    tasks: state.task.tasks
+    tasks: state.task.tasks,
+    selectedIndex: state.task.selectedIndex
   }),
   actions.task
 )(SprintListTasksContainer);
